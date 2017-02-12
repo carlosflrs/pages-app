@@ -32,13 +32,16 @@ class App extends Component {
     }
 
     responseFacebook(response) {
-        if (response.error || response.status === "unknown" || response.status === undefined) {
+        console.log();
+        if (response.expiresIn === undefined) {
             console.log("Something went wrong. Don't set userData");
+            console.log("Error Response:");
+            console.log(response);
         } else {
+            console.log("Response:");
+            console.log(response);
             this.handleLoginClick(response);
         }
-        console.log("Response:");
-        console.log(response);
     }
 
     render() {
