@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Button.css';
+import graph from 'fb-react-sdk';
 
 class Button extends Component {
 
@@ -9,7 +10,9 @@ class Button extends Component {
     }
 
     handleClick() {
-        console.log(this.props.text);
+        if (this.props.text === "Posts") {
+            console.log(this.props.text);
+        }
     }
 
     render() {

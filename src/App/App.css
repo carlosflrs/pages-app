@@ -26,17 +26,19 @@
     margin-right: 15px;
 }
 
-.App-header-login {
+.App-navbar {
+    /*position: fixed;*/
     background-color: #222;
     height: 50px;
     color: white;
+    width: 100%;
 }
 
-.App-header-home {
-    /*position: relative;*/
+.App-navbar-items {
+    position: relative;
     vertical-align: middle;
     font-size: large;
-    padding: 5px;
+    /*padding: 5px;*/
 }
 
 @keyframes App-logo-spin {

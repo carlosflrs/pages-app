@@ -1,12 +1,12 @@
 .Button {
     position: relative;
     display: inline-block;
-    height: 40px;
-    line-height: 40px;
+    /*height: 40px;*/
+    /*line-height: 40px;*/
     /*background: red;*/
     margin-right: 10px;
     cursor: pointer;
-    top: -15px;
+    /*top: -15px;*/
 }
 
 .Button:hover {

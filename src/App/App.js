@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
-import graph from 'fb-react-sdk';
 
 import logo from '../imgs/pages.svg';
 import './App.css';
 import Button from '../Button/Button.js'
+import Posts from '../Posts/Posts.js'
+import graph from 'fb-react-sdk';
 
 
 class App extends Component {
@@ -32,7 +33,6 @@ class App extends Component {
     }
 
     responseFacebook(response) {
-        console.log();
         if (response.expiresIn === undefined) {
             console.log("Something went wrong. Don't set userData");
             console.log("Error Response:");
@@ -40,6 +40,10 @@ class App extends Component {
         } else {
             console.log("Response:");
             console.log(response);
+            graph.setAccessToken(response['accessToken']);
+            graph.get("/me", {'fields': 'id,name,accounts'}, function(err, res) {
+                console.log(res);
+            });
             this.handleLoginClick(response);
         }
     }
@@ -49,22 +53,24 @@ class App extends Component {
         const isLoggedIn = this.state.isLoggedIn;
         let body = null;
         let header = null;
+        console.log("isLoggedIn:")
+        console.log(isLoggedIn);
         if (isLoggedIn) {
             header =
-                    <div className="App-header-login">
-                        <div className="App-header-home">
+                    <div className="App-navbar">
+                        <div className="App-navbar-items">
                             <img src={logo} className="App-logo-login" alt="logo"/>
                             <Button text="Pages"/>
                             <Button text="Posts"/>
                             <Button text="Publish"/>
                         </div>
+                        <Posts/>
                     </div>
             body =
                     <div className="App-body-login">
                         Hello {this.state.userData["name"]} you are logged in!
                     </div>
         } else {
-            console.log(isLoggedIn);
             header =
                     <div className="App-header-intro">
                         <img src={logo} className="App-logo-intro" alt="logo" />
