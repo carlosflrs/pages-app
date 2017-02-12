@@ -10,7 +10,7 @@
 .App-header-intro {
     text-align: center;
     background-color: #222;
-    height: 130px;
+    height: 180px;
     padding: 20px;
     color: white;
 }
@@ -27,18 +27,19 @@
 }
 
 .App-navbar {
-    /*position: fixed;*/
+    position: fixed;
     background-color: #222;
     height: 50px;
     color: white;
     width: 100%;
+    z-index: 10;
 }
 
 .App-navbar-items {
     position: relative;
     vertical-align: middle;
     font-size: large;
-    /*padding: 5px;*/
+    padding: 5px;
 }
 
 @keyframes App-logo-spin {

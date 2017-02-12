@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+
+/* UI */
 import './Button.css';
-import graph from 'fb-react-sdk';
 
 class Button extends Component {
 
