@@ -1,0 +1,14 @@
+.Button {
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    /*background: red;*/
+    margin-right: 10px;
+    cursor: pointer;
+    top: -15px;
+}
+
+.Button:hover {
+    color: rgba(252, 252, 252, 0.5);
+}
