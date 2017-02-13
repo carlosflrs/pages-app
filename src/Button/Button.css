@@ -12,3 +12,7 @@
 .Button:hover {
     color: rgba(252, 252, 252, 0.5);
 }
+
+.left {
+    left: 0;
+}

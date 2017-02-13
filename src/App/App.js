@@ -41,7 +41,7 @@ class App extends Component {
     handleLogoutClick() {
         this.setState({
             userData: {},
-            isLoggedIn: true
+            isLoggedIn: false
         });
     }
 
@@ -66,31 +66,13 @@ class App extends Component {
         console.log("isLoggedIn:")
         console.log(isLoggedIn);
         if (isLoggedIn) {
-            // header = <Navbar inverse collapseOnSelect>
-                // <Navbar.Header>
-                //     <Navbar.Brand>
-                //         Pages
-                //     </Navbar.Brand>
-                // <Navbar.Toggle />
-                // </Navbar.Header>
-                // <Navbar.Collapse>
-                // <Nav>
-                // <NavItem eventKey={1} > Posts </NavItem>
-                // <NavItem eventKey={2} > Publish </NavItem>
-                // </Nav>
-                // <Nav pullRight>
-                // <NavItem eventKey={1} href="#">Link Right</NavItem>
-                // <NavItem eventKey={2} href="#">Link Right</NavItem>
-                // </Nav>
-                // </Navbar.Collapse>
-                // </Navbar>
             header =
                 <div className="App-navbar">
                 <div className="App-navbar-items">
                 <img src={logo} className="App-logo-login" alt="logo"/>
                 <Button text="Pages"/>
                 <Button text="Posts"/>
-                <Button text="Publish"/>
+                <Button text="Log out" onClick={this.handleLogoutClick}/>
                 </div>
                 </div>
 
@@ -112,7 +94,8 @@ class App extends Component {
                     <FacebookLogin
                         appId='333756033684992'
                         autoLoad={false}
-                        fileds='manage_pages'
+                        fileds='id,name'
+                        scope='manage_pages'
                         callback={this.responseFacebook}
                     />
                 </div>

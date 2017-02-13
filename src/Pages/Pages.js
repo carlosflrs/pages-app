@@ -21,11 +21,11 @@ class Pages extends Component {
     componentWillMount() {
         console.log("Pages componentWillMount");
         console.log(this.props);
-        graph.get("/me", {'fields': 'id,name,accounts'}, function(err, res) {
+        graph.get("/me/accounts", function(err, res) {
             console.log("In componentWillMount");
-            console.log(res['accounts']['data']);
+            console.log(res['data']);
             this.setState(
-                {pages: res.accounts.data,
+                {pages: res.data,
                     dataReady: true}
             );
         }.bind(this));
@@ -39,7 +39,7 @@ class Pages extends Component {
         if (this.state.dataReady) {
             body =
                 <div>
-                    <Posts page={this.state.pages[0]}/>
+                    <Posts page={this.state.pages[1]}/>
                 </div>
         } else {
             body =
