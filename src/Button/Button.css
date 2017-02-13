@@ -3,8 +3,7 @@
     display: inline-block;
     /*height: 40px;*/
     /*line-height: 40px;*/
-    /*background: red;*/
-    margin-right: 10px;
+    /*margin-right: 10px;*/
     cursor: pointer;
     /*top: -15px;*/
 }
@@ -14,5 +13,6 @@
 }
 
 .left {
-    left: 0;
+    left: 100%;
+    margin-left: -100px;
 }

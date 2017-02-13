@@ -47,3 +47,47 @@
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+/*.App-logo-login {
+    top: 0px;
+}
+
+.App-navbar {
+    position: fixed;
+    height: 50px;
+    color: white;
+    width: 100%;
+}
+
+.App-body-login {
+    position: relative;
+    top: 50px;
+}
+
+.App-navbar-items {
+    position: fixed;
+    vertical-align: middle;
+    font-size: large;
+    padding: 5px;
+}
+
+.nav-style {
+    width: 100%;
+    position: fixed;
+    border-radius: 0px;
+    z-index: 10;
+}
+
+.nav-brand {
+    position: relative;
+}
+
+.logo {
+    height: 40px;
+    width: 40px;
+    margin-bottom: -10px;
+}
+
+@keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}*/

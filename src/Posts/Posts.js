@@ -8,7 +8,7 @@ import Button from '../Button/Button.js'
 import './Posts.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import { Well } from 'react-bootstrap';
+import { Panel, Tabs, Tab } from 'react-bootstrap';
 
 class Post extends Component {
 
@@ -38,9 +38,9 @@ class Post extends Component {
     render() {
         return (
             <div>
-                <Well bsSize="large" className="well"> {this.props.data['message']}
+                <Panel header="Post"> {this.props.data['message']}
                     <Button text="Likes" onClick={this.handleClick}/>
-                </Well>
+                </Panel>
             </div>
         );
     };
@@ -50,35 +50,24 @@ class Posts extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {posts: [],
-                        likes: {},
-                        dataReady: false,
-                        likesReady: false};
+        this.state = {posts: [], dataReady: false};
     }
 
     /* Before component renders. */
     componentWillMount() {
         console.log("Posts componentWillMount");
         console.log(this.props);
-        var reqUrl = "/" + this.props.page['id'] + "/feed";
+        var reqUrl = "/" + this.props.page['id'] + "/posts";
         var likesReq = "";
         graph.get(reqUrl, function(err, res) {
             console.log("Res response:");
             console.log(res.data);
             var posts = [];
-            var updates = [];
-            var post;
-            var i;
-            for (i = 0; i < res.data.length; i+=1) {
-                post = res.data[i];
-                // if ('message' in post) {
+            res.data.forEach((post) => {
                 posts.push(post);
-            }
+            });
             console.log("Setting state");
-            this.setState(
-                {posts: posts,
-                    dataReady: true}
-            );
+            this.setState({posts: posts, dataReady: true});
         }.bind(this));
     }
 
@@ -105,7 +94,7 @@ class Posts extends Component {
                 </div>
         }
         return (
-                <div>
+                <div className="post-body">
                     {body}
                 </div>
         );

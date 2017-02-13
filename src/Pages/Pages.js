@@ -8,6 +8,7 @@ import Posts from '../Posts/Posts.js'
 import './Pages.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
+import { Tabs, Tab } from 'react-bootstrap';
 
 
 class Pages extends Component {
@@ -48,8 +49,11 @@ class Pages extends Component {
                 </div>
         }
         return (
-                <div className="Posts">
-                    {body}
+                <div className="pages-body">
+                    <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+                    <Tab eventKey={1} title="Published"> {body} </Tab>
+                    <Tab eventKey={2} title="Unpublished">Tab 2 content</Tab>
+                    </Tabs>
                 </div>
         );
     }

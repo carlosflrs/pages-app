@@ -11,7 +11,7 @@ import logo from '../imgs/pages.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-// import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 
 
 
@@ -70,9 +70,9 @@ class App extends Component {
                 <div className="App-navbar">
                 <div className="App-navbar-items">
                 <img src={logo} className="App-logo-login" alt="logo"/>
-                <Button text="Pages"/>
+                <span style={{'margin-right': "10px"}}> Pages </span>
                 <Button text="Posts"/>
-                <Button text="Log out" onClick={this.handleLogoutClick}/>
+                <Button className="left" text="Log out" onClick={this.handleLogoutClick}/>
                 </div>
                 </div>
 
