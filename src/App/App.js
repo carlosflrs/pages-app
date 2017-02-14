@@ -63,7 +63,7 @@ class App extends Component {
         const isLoggedIn = this.state.isLoggedIn;
         let body = null;
         let header = null;
-        console.log("isLoggedIn:")
+        console.log("isLoggedIn:");
         console.log(isLoggedIn);
         if (isLoggedIn) {
             header =
@@ -71,8 +71,7 @@ class App extends Component {
                 <div className="App-navbar-items">
                 <img src={logo} className="App-logo-login" alt="logo"/>
                 <span style={{'margin-right': "10px"}}> Pages </span>
-                <Button text="Posts"/>
-                <Button className="left" text="Log out" onClick={this.handleLogoutClick}/>
+                <Button type="logout" text="Log out" onClick={this.handleLogoutClick}/>
                 </div>
                 </div>
 

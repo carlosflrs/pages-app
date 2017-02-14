@@ -1,4 +1,12 @@
 .pages-body {
     position: relative;
-    top: 50px;
+    top: 55px;
+}
+
+.page-container {
+    position: relative;
+    top: 20px;
+    width: 700px;
+    left: 50%;
+    margin-left: -350px;
 }

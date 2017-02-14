@@ -39,7 +39,7 @@ class Pages extends Component {
         let body = null;
         if (this.state.dataReady) {
             body =
-                <div>
+                <div className="page-container">
                     <Posts page={this.state.pages[1]}/>
                 </div>
         } else {

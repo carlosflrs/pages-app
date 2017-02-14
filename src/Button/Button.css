@@ -1,18 +1,37 @@
 .Button {
     position: relative;
     display: inline-block;
-    /*height: 40px;*/
-    /*line-height: 40px;*/
-    /*margin-right: 10px;*/
     cursor: pointer;
-    /*top: -15px;*/
 }
 
 .Button:hover {
     color: rgba(252, 252, 252, 0.5);
 }
 
-.left {
-    left: 100%;
-    margin-left: -100px;
+.likes {
+    border: 1px solid;
+    background-color: rgba(235, 234, 235, 0.5);
+    width: 40px;
+    text-align: center;
+    margin-left:95%;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.likes:hover {
+    background-color: rgba(235, 235, 235, 1);
+}
+
+.logout {
+    position: fixed;
+    float:left;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.logout:hover {
+    color: rgba(252, 252, 252, 0.5);
 }

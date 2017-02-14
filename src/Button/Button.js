@@ -25,9 +25,9 @@ class Button extends Component {
 
     render() {
         return (
-                <span className="Button" onClick={this.state.handler}>
+                <div className="Button" className={this.props.type} onClick={this.state.handler}>
                     {this.props.text}
-                </span>
+                </div>
                );
     };
 
