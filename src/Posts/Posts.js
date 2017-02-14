@@ -8,7 +8,7 @@ import Button from '../Button/Button.js'
 import './Posts.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import { Panel, ButtonToolbar, SplitButton, MenuItem} from 'react-bootstrap';
+import { Panel, ButtonToolbar, DropdownButton, MenuItem} from 'react-bootstrap';
 
 class Post extends Component {
 
@@ -48,14 +48,23 @@ class Post extends Component {
 
     render() {
         let title = this.state.likes_list.length + " Likes";
+        let text = null;
+        let header = null;
+        if ("message" in this.props.data) {
+            header = "Post";
+            text = this.props.data['message'];
+        } else if ("story" in this.props.data) {
+            header = "Update";
+            text = this.props.data['story'];
+        }
         return (
             <div>
-                <Panel header="Post">
-                    {this.props.data['message']}
+                <Panel header={header}>
+                    {text}
                     <ButtonToolbar>
-                      <SplitButton title={title} dropup pullRight id="split-button-dropup">
+                      <DropdownButton style={{top: "5px"}} title={title} dropup pullRight id="dropdown-no-caret">
                         {this.state.likes_list}
-                      </SplitButton>
+                      </DropdownButton>
                     </ButtonToolbar>
                 </Panel>
             </div>
@@ -89,26 +98,16 @@ class Posts extends Component {
 
     render() {
         let body = null;
-        console.log("Rendering");
-        console.log(this.state.dataReady);
-        if (this.state.dataReady) {
-            var rows = [];
-            console.log(this.state.posts);
-            this.state.posts.forEach((post) => {
-                //TODO: Add type here to show update or post in <Post> component.
-                rows.push(<Post data={post}/>);
-            });
-            body =
-                <div>
-                    {rows}
-                </div>
-        } else {
-            body =
-                <div>
-                    // Do a spinner of sorts if posts take to long to render due to likes.
-                    Data not ready.
-                </div>
-        }
+        var rows = [];
+        console.log(this.state.posts);
+        this.state.posts.forEach((post) => {
+            //TODO: Add type here to show update or post in <Post> component.
+            rows.push(<Post data={post}/>);
+        });
+        body =
+            <div>
+                {rows}
+            </div>
         return (
                 <div className="post-body">
                     {body}

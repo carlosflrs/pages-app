@@ -16,8 +16,7 @@ class Pages extends Component {
     constructor(props) {
         super(props);
         this.state = {pages: [], dataReady: false};
-        this.componentWillMount = this.componentWillMount.bind(this);
-    }
+    };
 
     componentWillMount() {
         console.log("Pages componentWillMount");
@@ -30,30 +29,27 @@ class Pages extends Component {
                     dataReady: true}
             );
         }.bind(this));
-    }
+    };
 
     render() {
-        // For rendering posts:
-        // http://v4-alpha.getbootstrap.com/components/list-group/
-        // styling https://github.com/erikras/react-redux-universal-hot-example/issues/171
         let body = null;
         if (this.state.dataReady) {
-            body =
-                <div className="page-container">
-                    <Posts page={this.state.pages[1]}/>
-                </div>
+            var pages_arr = [];
+            var i;
+            for (i=0; i < this.state.pages.length; i+=1) {
+                pages_arr.push(<Tab eventKey={i} title={this.state.pages[i]['name']}>
+                        <Posts page={this.state.pages[i]}/>
+                    </Tab>);
+            }
+            body = <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+                        {pages_arr}
+                    </Tabs>
         } else {
-            body =
-                <div>
-                    Data not ready.
-                </div>
+            body = <div className="loader"></div>;
         }
         return (
-                <div className="pages-body">
-                    <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-                    <Tab eventKey={1} title="Published"> {body} </Tab>
-                    <Tab eventKey={2} title="Unpublished">Tab 2 content</Tab>
-                    </Tabs>
+                <div className="page-container">
+                    {body}
                 </div>
         );
     }
