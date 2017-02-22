@@ -3,6 +3,7 @@ import graph from 'fb-react-sdk';
 
 /* Own Components */
 import Posts from '../Posts/Posts.js'
+import Publish from '../Publish/Publish.js'
 
 /* UI */
 import './Pages.css';
@@ -19,11 +20,7 @@ class Pages extends Component {
     };
 
     componentWillMount() {
-        console.log("Pages componentWillMount");
-        console.log(this.props);
         graph.get("/me/accounts", function(err, res) {
-            console.log("In componentWillMount");
-            console.log(res['data']);
             this.setState(
                 {pages: res.data,
                     dataReady: true}
@@ -41,9 +38,13 @@ class Pages extends Component {
                         <Posts page={this.state.pages[i]}/>
                     </Tab>);
             }
-            body = <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+            body =
+                <div>
+                    <Tabs defaultActiveKey={0} id="uncontrolled-tab-example">
                         {pages_arr}
                     </Tabs>
+                    <Publish page={this.state.pages[1]}/>
+                </div>
         } else {
             body = <div className="loader"></div>;
         }

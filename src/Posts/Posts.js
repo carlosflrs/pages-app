@@ -22,12 +22,9 @@ class Post extends Component {
         var likesReq = "/" + this.props.data['id'] + '/likes'
         graph.get(likesReq, function(err, res) {
             if (res) {
-                console.log("Post componentWillMount");
-                console.log(res);
                 let likes_list = [];
                 var link = "";
                 res.data.forEach((like) => {
-                    console.log(like);
                     link = "https://facebook.com/" + like['id'];
                     likes_list.push(<MenuItem href={link} target="_blank" eventKey="1">
                         {like['name']}
@@ -81,17 +78,12 @@ class Posts extends Component {
 
     /* Before component renders. */
     componentWillMount() {
-        console.log("Posts componentWillMount");
-        console.log(this.props);
         var reqUrl = "/" + this.props.page['id'] + "/posts";
         graph.get(reqUrl, function(err, res) {
-            console.log("Res response:");
-            console.log(res.data);
             var posts = [];
             res.data.forEach((post) => {
                 posts.push(post);
             });
-            console.log("Setting state");
             this.setState({posts: posts, dataReady: true});
         }.bind(this));
     }
@@ -99,7 +91,6 @@ class Posts extends Component {
     render() {
         let body = null;
         var rows = [];
-        console.log(this.state.posts);
         this.state.posts.forEach((post) => {
             //TODO: Add type here to show update or post in <Post> component.
             rows.push(<Post data={post}/>);

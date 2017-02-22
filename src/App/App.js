@@ -11,7 +11,6 @@ import logo from '../imgs/pages.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-// import { Button } from 'react-bootstrap';
 
 
 
@@ -23,13 +22,8 @@ class App extends Component {
         this.responseFacebook = this.responseFacebook.bind(this);
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleLogoutClick = this.handleLogoutClick.bind(this);
-        this.componentWillMount = this.componentWillMount.bind(this);
     }
 
-
-    componentWillMount() {
-        //TODO set isLoggedIn variable here to show correct view when refreshing
-    }
 
     handleLoginClick(data) {
         this.setState({
@@ -63,21 +57,19 @@ class App extends Component {
         const isLoggedIn = this.state.isLoggedIn;
         let body = null;
         let header = null;
-        console.log("isLoggedIn:");
-        console.log(isLoggedIn);
         if (isLoggedIn) {
             header =
                 <div className="App-navbar">
-                <div className="App-navbar-items">
-                <img src={logo} className="App-logo-login" alt="logo"/>
-                <span style={{'margin-right': "10px"}}> Pages </span>
-                <Button type="logout" text="Log out" onClick={this.handleLogoutClick}/>
-                </div>
+                    <div className="App-navbar-items">
+                    <img src={logo} className="App-logo-login" alt="logo"/>
+                        <span style={{'margin-right': "10px"}}> Pages </span>
+                        <Button type="logout" text="Log out" onClick={this.handleLogoutClick}/>
+                    </div>
                 </div>
 
             body =
                 <div className="App-body-login">
-                <Pages user={this.state.userData}/>
+                    <Pages user={this.state.userData}/>
                 </div>
         } else {
             header =
@@ -94,7 +86,7 @@ class App extends Component {
                         appId='333756033684992'
                         autoLoad={false}
                         fileds='id,name'
-                        scope='manage_pages'
+                        scope='manage_pages, publish_pages,publish_actions'
                         callback={this.responseFacebook}
                     />
                 </div>
