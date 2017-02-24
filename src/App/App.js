@@ -83,7 +83,7 @@ class App extends Component {
                     The app that allows you to manage your Facebook pages.
                     </p>
                     <FacebookLogin
-                        appId='333756033684992'
+                        appId= /* App-id*/,
                         autoLoad={false}
                         fileds='id,name'
                         scope='manage_pages, publish_pages,publish_actions'
